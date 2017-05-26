@@ -55,8 +55,13 @@ footer {
   font-size: large;
 }
 
+.Navbar{
+  box-shadow: none;
+  margin-bottom: 0;
+}
+
 .App-player{
-  height: 500px;
+  height: 80vh;
   width: 100%;
   background-color: red;
   display: flex;
@@ -67,18 +72,56 @@ footer {
   flex: 2;
   width: 100%;
   height: 100%;
-  background-color: green;
+  background-color: black;
+  border: none;
 }
 
 .songlist{
   flex: 1;
   width: 100%;
   height: 100%;
-  background-color: blue;
+  background: rgba(56,54,54,1);
+  overflow: scroll;
+background: -moz-radial-gradient(center, ellipse cover, rgba(56,54,54,1) 0%, rgba(41,39,40,1) 30%, rgba(14,14,15,1) 100%);
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(56,54,54,1)), color-stop(30%, rgba(41,39,40,1)), color-stop(100%, rgba(14,14,15,1)));
+background: -webkit-radial-gradient(center, ellipse cover, rgba(56,54,54,1) 0%, rgba(41,39,40,1) 30%, rgba(14,14,15,1) 100%);
+background: -o-radial-gradient(center, ellipse cover, rgba(56,54,54,1) 0%, rgba(41,39,40,1) 30%, rgba(14,14,15,1) 100%);
+background: -ms-radial-gradient(center, ellipse cover, rgba(56,54,54,1) 0%, rgba(41,39,40,1) 30%, rgba(14,14,15,1) 100%);
+background: radial-gradient(ellipse at center, rgba(56,54,54,1) 0%, rgba(41,39,40,1) 30%, rgba(14,14,15,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#383636', endColorstr='#0e0e0f', GradientType=1 );
+}
+.addSongBtn{
+  border: none;
+  width: 100%;
+  background: rgba(147,206,222,1);
+background: -moz-radial-gradient(center, ellipse cover, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 41%, rgba(73,165,191,1) 100%);
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(147,206,222,1)), color-stop(41%, rgba(117,189,209,1)), color-stop(100%, rgba(73,165,191,1)));
+background: -webkit-radial-gradient(center, ellipse cover, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 41%, rgba(73,165,191,1) 100%);
+background: -o-radial-gradient(center, ellipse cover, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 41%, rgba(73,165,191,1) 100%);
+background: -ms-radial-gradient(center, ellipse cover, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 41%, rgba(73,165,191,1) 100%);
+background: radial-gradient(ellipse at center, rgba(147,206,222,1) 0%, rgba(117,189,209,1) 41%, rgba(73,165,191,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#93cede', endColorstr='#49a5bf', GradientType=1 );
+  color: white;
+}
+.addSongBtn:hover{
+  background: rgba(147,206,222,1);
+}
+.songs{
+  border: none;
+  width: 100%;
+  background-color: rgb(39, 40, 40);
+  color: white;
+}
+.songs:hover{
+  background-color: rgba(39, 40, 40, .5);
+  box-shadow: 5px 2px 10px 1px black;
+  border-radius: 10px;
+  transition: .3s;
+  
 }
 
 .songLi{
-  border-bottom: 2px solid black;
+ 
 }
 
 @keyframes App-logo-spin {

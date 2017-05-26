@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
-class About extends Component {
+class AddForm extends Component {
+  
   render() {
     return (
       <div id="AddForm">
@@ -15,4 +16,4 @@ class About extends Component {
   }
 }
 
-export default About;
+export default AddForm;

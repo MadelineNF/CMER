@@ -9,22 +9,6 @@ import {
 } from 'react-router-dom'
 import Footer from './components/Footer';
 
-
-// class App extends Component {
-//   render() {
-//     return (
-//       <div className="App">
-        
-//       <Nav/>
-//       <Footer />
-//       </div>
-//     );
-//   }
-// }
-
-// export default App;
-
-
 import Player from './components/Player';
 
 class App extends Component {
@@ -32,14 +16,22 @@ class App extends Component {
     super(props);
     this.state = {
       playlist: [],
+      artist: '',
+      song: '',
+      src: '',
+     
     }
+      this.handleInputArtistChange = this.handleInputArtistChange.bind(this);
+    this.handleInputSongChange = this.handleInputSongChange.bind(this);
+    this.handleInputSrcChange = this.handleInputSrcChange.bind(this);
   }
+
   componentDidMount(){
     this.fetchAllPlaylist()
   }
-
+  
   fetchAllPlaylist() {
-    fetch('https://warm-reef-44020.herokuapp.com/api/myplaylist')
+    fetch('/api/myplaylist')
       .then((res) => {
         return res.json()
       })
@@ -47,10 +39,56 @@ class App extends Component {
         console.log(json);
         this.setState((prevState) => {
           return {
-            playlist: json.songsData,
+            playlist: json.songsData.songs,
           }
         })
       })
+  }
+
+   handleInputArtistChange(event) {
+    this.setState({artist: event.target.value})
+  }
+
+  handleInputSongChange(event){
+    this.setState({song: event.target.value})
+  }
+
+  handleInputSrcChange(event){
+    this.setState({src: event.target.value})
+  }
+
+    handleSongSubmit(event) {
+    event.preventDefault();
+
+        fetch('/api/myplaylist', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        artist: event.target.artist.value,
+        song: event.target.song.value,
+        src: event.target.src.value,
+      }),
+    })
+    .then((res) => {
+      return res.json()
+    })
+    .then((json) => {
+      if (json.songData.songs.id !== undefined) {
+        const newSong = {
+          id: json.songData.songs.id,
+          artist: json.songData.songs.artist,
+          song: json.songData.songs.song,
+          src: json.songData.songs.src,
+        }
+        this.setState((prevState) => {
+          return {
+            playlist: prevState.playlist.concat(newSong),
+          }
+        })
+      } else {
+        console.log('error');
+      }
+    })
   }
 
   render() {
@@ -63,7 +101,18 @@ class App extends Component {
               // </div>}
         }
         <Nav/>
-        <Player playlist={this.state.playlist}/>
+        <Player 
+          playlist={this.state.playlist} 
+          handleSongSubmit={this.handleSongSubmit}
+
+          handleInputArtistChange={this.handleInputArtistChange}
+          handleInputSongChange={this.handleInputSongChange}
+          handleInputSrcChange={this.handleInputSrcChange}
+
+          artist={this.state.artist}
+          song={this.state.song}
+          src={this.state.src}
+        />
         
         <Footer />
       </div>
