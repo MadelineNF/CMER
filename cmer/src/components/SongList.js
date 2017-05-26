@@ -4,13 +4,31 @@ import Song from './Song';
 class SongList extends Component {
     render() {
         return(
-            <ul>
-                {this.props.playlist.map((playlist) => {
+            <div>
+                {this.props.playlist.map((playlist, index) => {
                     return (
+
+                        <Song 
+                            key={playlist.id} 
+                            playlist={playlist} 
+                            index={index} 
+                            onSongClick={this.props.onSongClick} 
+                            handleSongSubmit={this.props.handleSongSubmit}
+
+                            handleInputArtistChange={this.props.handleInputArtistChange}
+                            handleInputSongChange={this.props.handleInputSongChange}
+                            handleInputSrcChange={this.props.handleInputSrcChange}
+
+                            artist={this.props.artist}
+                            song={this.props.song}
+                            src={this.props.src}
+                        />
+
                         <Song key={playlist.id} playlist={playlist} onSongClick={this.props.onSongClick} handleSongDelete={this.props.handleSongDelete} />
+
                     )
                 })}
-            </ul>
+            </div>
         )
     }
 }
