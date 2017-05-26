@@ -33,6 +33,7 @@ this.onSongClick = this.onSongClick.bind(this);
                <iframe className='player' src={this.state.src}>
                </iframe>
                <div className='songlist'>
+
                     {//<AddButton/>}
                     }
                     <Songlist 
@@ -48,6 +49,9 @@ this.onSongClick = this.onSongClick.bind(this);
                         song={this.props.song}
                         src={this.props.src}
                     />
+
+                    <Songlist playlist={this.props.playlist} onSongClick={this.onSongClick} handleSongDelete={this.props.handleSongDelete}/>
+
                </div>
             </main>
         )

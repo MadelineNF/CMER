@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {logo} from './logo.svg';
 import './App.css';
-import Nav from './components/Navigation';
-import Hero from './components/Hero';
 import {
   BrowserRouter as Router,
   Route,
   Link
+
 } from 'react-router-dom'
 import Footer from './components/Footer';
 
 import Player from './components/Player';
+
+} from 'react-router-dom';
+import Landing from './components/Landing';
+import Play from './components/Play';
+import Abt from './components/abt'
+
 
 class App extends Component {
   constructor(props) {
@@ -22,9 +27,13 @@ class App extends Component {
       src: '',
      
     }
+
       this.handleInputArtistChange = this.handleInputArtistChange.bind(this);
     this.handleInputSongChange = this.handleInputSongChange.bind(this);
     this.handleInputSrcChange = this.handleInputSrcChange.bind(this);
+
+    this.handleSongDelete=this.handleSongDelete.bind(this);
+
   }
 
   componentDidMount(){
@@ -45,6 +54,7 @@ class App extends Component {
         })
       })
   }
+
 
    handleInputArtistChange(event) {
     this.setState({artist: event.target.value})
@@ -90,12 +100,27 @@ class App extends Component {
         console.log('error');
       }
     })
+
+  handleSongDelete(id) {
+    fetch(`https://warm-reef-44020.herokuapp.com/api/myplaylist/${id}`, {
+      method: 'DELETE',
+    })
+      .then((response) => {
+        return response.json;
+      })
+      .then((responseJson) => {
+        if (responseJson.status === 200){
+          this.fetchAllPlaylist();
+        }
+      })
+
   }
 
   render() {
     return (
 
       <div className="App">
+
 
         {//<div className="App-header">
           //<img src={logo} className="App-logo" alt="logo" />
@@ -121,6 +146,15 @@ class App extends Component {
         <Player playlist={this.state.playlist} />
 
         <Footer />
+
+        <Router>
+          <main>
+            <Route exact path="/" component={Landing} />
+            <Route path="/play" component={Play} />
+            <Route path="/about" component={Abt} />
+          </main>
+      </Router>
+
       </div>
     );
   }

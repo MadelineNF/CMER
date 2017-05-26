@@ -1,61 +1,43 @@
+html{
+  background: url(./assets/htmlBG.jpg); 
+}
+
 .App {
     text-align: center;
 }
 
-
-/*.Navbar {
-    text-transform: uppercase;
-    height: 60px;
-}*/
-
-
-/*nav {
-    flex: 0 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    color: white;
-    height: 40px;
-    background-color: #222222;
-    box-shadow: 1px 1px 50px #888888;
-    border-bottom: 1px solid white;
-}*/
-
 footer {
-    flex: 0 200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
     text-transform: uppercase;
     color: white;
     height: 40px;
     text-decoration: none;
     background-color: #222222;
     box-shadow: 10px 10px 5px #888888;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 #hero {
     margin: 0 auto;
     padding: 20px;
     height: 720px;
-    -webkit-box-shadow: -1px 4px 33px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: -1px 4px 33px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: -1px 4px 33px 0px rgba(0, 0, 0, 0.75);
-    background: rgb(122, 188, 255);
-    /* Old browsers */
-    background: -moz-linear-gradient(top, rgba(122, 188, 255, 1) 0%, rgba(96, 171, 248, 1) 44%, rgba(12, 13, 45, 1) 100%);
-    /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, rgba(122, 188, 255, 1) 0%, rgba(96, 171, 248, 1) 44%, rgba(12, 13, 45, 1) 100%);
-    /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, rgba(122, 188, 255, 1) 0%, rgba(96, 171, 248, 1) 44%, rgba(12, 13, 45, 1) 100%);
-    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#7abcff', endColorstr='#0c0d2d', GradientType=0);
-    /* IE6-9 */
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: rgba(221,238,249,0.8);
+}
+#About {
+    margin: 0 auto;
+    margin-bottom:40px;
+    padding: 80px;
+    height: 720px;
+    background: rgba(221,238,249,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+
 }
 
 
