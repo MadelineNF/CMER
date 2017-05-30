@@ -13,6 +13,8 @@ class Songlist extends Component {
                             index={index} 
                             onSongClick={this.props.onSongClick} 
                             handleSongSubmit={this.props.handleSongSubmit}
+                            handleSongDelete={this.props.handleSongDelete}
+                            handleSongEdit={this.props.handleSongEdit}
 
                             handleInputArtistChange={this.props.handleInputArtistChange}
                             handleInputSongChange={this.props.handleInputSongChange}
