@@ -4,10 +4,7 @@ class Footer extends Component {
   render() {
     return (
       <footer>
-        <ul>
-          <li>Fork on <a href="#">Github</a></li>
-          <li>This is an <a href="#">CMER</a> Playlist App</li>
-        </ul>
+        Fork on <a href="https://www.github.com/MadelineNF/CMER" target="_blank">Github</a> | <a href='https://warm-reef-44020.herokuapp.com' target='_blank'>API</a>
       </footer>
     )
   }

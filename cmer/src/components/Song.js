@@ -1,6 +1,7 @@
 
 import React, {Component} from 'react';
 import '../App.css';
+import SongList from './SongList';
 
 
 class Song extends Component {
@@ -87,6 +88,7 @@ class Song extends Component {
 
     renderPlaylist() {
         return(
+
             <div className='songLi'>
                 <button className='addSongBtn'onClick={()=> {
                     this.setState({isBeingAdded: true})
@@ -101,6 +103,14 @@ class Song extends Component {
                     <button className='editSongBtn' onClick={()=> {this.setState({isBeingEdited: true})}}>Edit song</button>
                 </div>
             </div>
+
+            <li className='songLi'>
+                <button onClick={this.props.onSongClick}>{this.props.playlist.song}</button>
+                <p>{this.props.playlist.artist}</p>
+                <button>Edit</button>
+                <button onClick={() => {this.props.handleSongDelete(this.props.playlist.id) }}>Delete</button>
+            </li>
+
         )
     }
 

@@ -139,6 +139,7 @@ class Player extends Component {
                <iframe className='player' src={this.state.src}>
                </iframe>
                <div className='songlist'>
+
                     {//<AddButton/>}
                   }
                   
@@ -157,6 +158,9 @@ class Player extends Component {
                         song={this.state.song}
                         src={this.state.src}
                     />
+
+                    <Songlist playlist={this.props.playlist} onSongClick={this.onSongClick} handleSongDelete={this.props.handleSongDelete}/>
+
                </div>
             </main>
         )

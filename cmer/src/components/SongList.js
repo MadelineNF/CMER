@@ -1,12 +1,13 @@
 import React, {Component} from 'react'
 import Song from './Song';
 
-class Songlist extends Component {
+class SongList extends Component {
     render() {
         return(
             <div>
                 {this.props.playlist.map((playlist, index) => {
                     return (
+
                         <Song 
                             key={playlist.id} 
                             playlist={playlist} 
@@ -24,6 +25,9 @@ class Songlist extends Component {
                             song={this.props.song}
                             src={this.props.src}
                         />
+
+                        <Song key={playlist.id} playlist={playlist} onSongClick={this.props.onSongClick} handleSongDelete={this.props.handleSongDelete} />
+
                     )
                 })}
             </div>
@@ -31,4 +35,4 @@ class Songlist extends Component {
     }
 }
 
-export default Songlist;
+export default SongList;

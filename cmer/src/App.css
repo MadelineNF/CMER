@@ -1,7 +1,12 @@
+html{
+  background: url(./assets/htmlBG.jpg); 
+}
+
 .App {
     text-align: center;
 }
 
+<<<<<<< HEAD
 
 /*.Navbar {
     text-transform: uppercase;
@@ -28,6 +33,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+=======
+footer {
+>>>>>>> a1044550e0b4e28d822bfa4a4c0c40cd52e073db
     text-transform: uppercase;
     color: white;
     height: 40px;
