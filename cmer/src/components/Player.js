@@ -131,6 +131,8 @@ class Player extends Component {
         })
       })
   }
+
+  
     render() {
         return(
             <main className='App-player'>
@@ -138,7 +140,8 @@ class Player extends Component {
                </iframe>
                <div className='songlist'>
                     {//<AddButton/>}
-                    }
+                  }
+                  
                     <Songlist 
                         playlist={this.state.playlist} 
                         onSongClick={this.onSongClick} 
