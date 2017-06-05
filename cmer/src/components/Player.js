@@ -1,16 +1,120 @@
 import React, {Component} from 'react';
 import '../App.css';
 import Songlist from './SongList';
-import AddButton from './addButton.jsx';
+
 
 class Player extends Component {
-    constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {
+      playlist: [],
+      artist: '',
+      song: '',
       src: '',
      
     }
-this.onSongClick = this.onSongClick.bind(this);
+      this.handleInputArtistChange = this.handleInputArtistChange.bind(this);
+    this.handleInputSongChange = this.handleInputSongChange.bind(this);
+    this.handleInputSrcChange = this.handleInputSrcChange.bind(this);
+
+    this.handleSongSubmit = this.handleSongSubmit.bind(this);
+    this.fetchAllPlaylist = this.fetchAllPlaylist.bind(this);
+    this.onSongClick = this.onSongClick.bind(this);
+  }
+
+  componentDidMount(){
+    this.fetchAllPlaylist()
+  }
+  
+  fetchAllPlaylist() {
+    fetch('/api/myplaylist')
+      .then((res) => {
+        return res.json()
+      })
+      .then((json) => {
+        console.log(json);
+        this.setState((prevState) => {
+          return {
+            playlist: json.songsData.songs,
+          }
+        })
+      })
+  }
+
+   handleInputArtistChange(event) {
+    this.setState({artist: event.target.value})
+  }
+
+  handleInputSongChange(event){
+    this.setState({song: event.target.value})
+  }
+
+  handleInputSrcChange(event){
+    this.setState({src: event.target.value})
+  }
+
+    handleSongSubmit(event) {
+    event.preventDefault();
+
+        fetch('/api/myplaylist', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        artist: event.target.artist.value,
+        song: event.target.song.value,
+        src: event.target.src.value,
+      }),
+    })
+    .then((res) => {
+      return res.json()
+    })
+    .then((json) => {
+      if (json.songData.songs.id !== undefined) {
+        const newSong = {
+          id: json.songData.songs.id,
+          artist: json.songData.songs.artist,
+          song: json.songData.songs.song,
+          src: json.songData.songs.src,
+        }
+        this.setState((prevState) => {
+          return {
+            playlist: prevState.playlist.concat(newSong),
+          }
+        })
+      } else {
+        console.log('error');
+      }
+    })
+  }
+
+  handleSongEdit(event){
+    event.preventDefault();
+    console.log(event);
+    fetch(`/api/myplaylist/${event.target.id.value}`, {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        artist: event.target.artist.value,
+        song: event.target.song.value,
+        src: event.target.src.value,
+      }),
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        this.fetchAllPlaylist();
+      }
+    })
+  }
+
+  handleSongDelete(Id) {
+    fetch(`/api/myplaylist/${Id}`, {
+      method: 'DELETE',
+    })
+    .then((response) => {
+      if (response.status === 200) {
+        this.fetchAllPlaylist();
+      }
+    })
   }
 
   onSongClick(e) {
@@ -27,30 +131,29 @@ this.onSongClick = this.onSongClick.bind(this);
         })
       })
   }
+
+  
     render() {
         return(
             <main className='App-player'>
                <iframe className='player' src={this.state.src}>
                </iframe>
                <div className='songlist'>
-
-                    {//<AddButton/>}
-                    }
                     <Songlist 
-                        playlist={this.props.playlist} 
+                        playlist={this.state.playlist} 
                         onSongClick={this.onSongClick} 
-                        handleSongSubmit={this.props.handleSongSubmit}
+                        handleSongSubmit={this.handleSongSubmit}
+                        handleSongDelete={this.handleSongDelete}
+                        handleSongEdit={this.handleSongEdit}
 
-                        handleInputArtistChange={this.props.handleInputArtistChange}
-                        handleInputSongChange={this.props.handleInputSongChange}
-                        handleInputSrcChange={this.props.handleInputSrcChange}
+                        handleInputArtistChange={this.handleInputArtistChange}
+                        handleInputSongChange={this.handleInputSongChange}
+                        handleInputSrcChange={this.handleInputSrcChange}
 
-                        artist={this.props.artist}
-                        song={this.props.song}
-                        src={this.props.src}
+                        artist={this.state.artist}
+                        song={this.state.song}
+                        src={this.state.src}
                     />
-
-                    <Songlist playlist={this.props.playlist} onSongClick={this.onSongClick} handleSongDelete={this.props.handleSongDelete}/>
 
                </div>
             </main>

@@ -1,10 +1,9 @@
-html{
-  background: url(./assets/htmlBG.jpg); 
-}
+
 
 .App {
     text-align: center;
 }
+
 
 footer {
     text-transform: uppercase;
@@ -40,6 +39,10 @@ footer {
 
 }
 
+.aboutText{
+  padding: 30px;
+  margin-top: 20%;
+}
 
 .App {
   text-align: center;

@@ -14,6 +14,8 @@ class SongList extends Component {
                             index={index} 
                             onSongClick={this.props.onSongClick} 
                             handleSongSubmit={this.props.handleSongSubmit}
+                            handleSongDelete={this.props.handleSongDelete}
+                            handleSongEdit={this.props.handleSongEdit}
 
                             handleInputArtistChange={this.props.handleInputArtistChange}
                             handleInputSongChange={this.props.handleInputSongChange}
@@ -22,11 +24,9 @@ class SongList extends Component {
                             artist={this.props.artist}
                             song={this.props.song}
                             src={this.props.src}
+                            
                         />
-
-                        <Song key={playlist.id} playlist={playlist} onSongClick={this.props.onSongClick} handleSongDelete={this.props.handleSongDelete} />
-
-                    )
+                      )
                 })}
             </div>
         )
