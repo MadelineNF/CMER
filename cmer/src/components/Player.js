@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import '../App.css';
 import Songlist from './SongList';
-import AddButton from './addButton.jsx';
+
 
 class Player extends Component {
   constructor(props) {
@@ -139,10 +139,6 @@ class Player extends Component {
                <iframe className='player' src={this.state.src}>
                </iframe>
                <div className='songlist'>
-
-                    {//<AddButton/>}
-                  }
-                  
                     <Songlist 
                         playlist={this.state.playlist} 
                         onSongClick={this.onSongClick} 
@@ -158,8 +154,6 @@ class Player extends Component {
                         song={this.state.song}
                         src={this.state.src}
                     />
-
-                    <Songlist playlist={this.props.playlist} onSongClick={this.onSongClick} handleSongDelete={this.props.handleSongDelete}/>
 
                </div>
             </main>

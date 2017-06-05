@@ -18,18 +18,6 @@ class Navigation extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav className="Nav">
-<<<<<<< HEAD
-            <NavItem eventKey={1} href="/">Home</NavItem>
-            <NavItem eventKey={2} href="/about">About</NavItem>
-=======
-
-            <NavItem eventKey={1} href="#">Home</NavItem>
-            <NavItem eventKey={2} href="#">About</NavItem>
->>>>>>> a1044550e0b4e28d822bfa4a4c0c40cd52e073db
-            <NavDropdown eventKey={3} title="Dropdown" id="nav-dropdown">
-              <MenuItem eventKey={3.1}>Action</MenuItem>
-              <MenuItem eventKey={3.2}>Another action</MenuItem>
-
             <NavItem eventKey={1}><Link to="/play">Play</Link></NavItem>
             <NavItem eventKey={2}><Link to="/about">About</Link></NavItem>
             <NavItem eventKey={3}><Link to="/about">Contact</Link></NavItem>
@@ -41,12 +29,9 @@ class Navigation extends Component {
               <MenuItem eventKey={4.3}>API</MenuItem>
             </NavDropdown>
           </Nav>
-<<<<<<< HEAD
           <Nav pullRight>
             <NavItem eventKey={1} href="/play">Player</NavItem>
           </Nav> 
-=======
->>>>>>> a1044550e0b4e28d822bfa4a4c0c40cd52e073db
         </Navbar.Collapse>
       </Navbar>  
     );

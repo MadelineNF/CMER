@@ -24,11 +24,9 @@ class SongList extends Component {
                             artist={this.props.artist}
                             song={this.props.song}
                             src={this.props.src}
+                            
                         />
-
-                        <Song key={playlist.id} playlist={playlist} onSongClick={this.props.onSongClick} handleSongDelete={this.props.handleSongDelete} />
-
-                    )
+                      )
                 })}
             </div>
         )
